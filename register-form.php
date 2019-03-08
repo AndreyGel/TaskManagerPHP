@@ -19,14 +19,14 @@
     <form class="form-signin" action="register.php" method="post">
         <img class="mb-4" src="markup/assets/img/bootstrap-solid.svg" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Регистрация</h1>
-        <label for="inputEmail" class="sr-only">Имя</label>
-        <input type="text" name="user_name" id="inputName" class="form-control" placeholder="Имя" autofocus>
-        <label for="inputEmail" class="sr-only">Email</label>
-        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email" >
-        <label for="inputPassword" class="sr-only">Пароль</label>
-        <input type="password" name ="password" id="inputPassword" class="form-control" placeholder="Пароль">
+        <label for="name" class="sr-only">Имя</label>
+        <input type="text" name="user_name" id="name" class="form-control" placeholder="Имя">
+        <label for="email" class="sr-only">Email</label>
+        <input type="email" name="email" id="Email" class="form-control" placeholder="Email">
+        <label for="password" class="sr-only">Пароль</label>
+        <input type="password" name ="password" id="password" class="form-control" placeholder="Пароль">
         <button class="btn btn-lg btn-primary btn-block" type="submit">Зарегистрироваться</button>
-        <a href="#">Войти</a>
+        <a href="/login-form.php">Войти</a>
         <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
     </form>
 </div>

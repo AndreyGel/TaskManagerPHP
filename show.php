@@ -1,4 +1,10 @@
-
+<?php
+session_start();
+if ($_SESSION['logged_user']) :
+    require 'TasksManager.php';
+    $query = new TasksManager();
+    $task = $query->getTask($_GET['id']);
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -17,11 +23,15 @@
 
   <body>
     <div class="form-wrapper text-center">
-      <img src="markup/assets/img/no-image.jpg" alt="" width="400">
-      <h2>Lorem ipsum</h2>
-      <p>
-        Пройти первый а потом второй урок. Закрепить практикой и написать проект сначала без подглядываний.
-      </p>
+      <img src="<?=$task['image']?>" alt="" width="400">
+      <h2><?=$task['title']?></h2>
+      <p><?=$task['description']?></p>
+      <a href="<?=$_SERVER['HTTP_REFERER']?>">Назад</a>
     </div>
   </body>
 </html>
+<?php else:
+    header("Location: /login-form.php");
+    exit;
+endif;
+?>

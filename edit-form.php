@@ -1,6 +1,12 @@
-
+<?php
+session_start();
+if ($_SESSION['logged_user']) :
+    require 'TasksManager.php';
+    $query = new TasksManager();
+    $task = $query->getTask($_GET['id']);
+?>
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="utf-8">
 
@@ -17,18 +23,23 @@
 
   <body>
     <div class="form-wrapper text-center">
-      <form class="form-signin">
+      <form class="form-signin" action="edit.php?id=<?=$_GET['id']?>" method="post" enctype="multipart/form-data">
         <img class="mb-4" src="markup/assets/img/bootstrap-solid.svg" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Добавить запись</h1>
-        <label for="inputEmail" class="sr-only">Название</label>
-        <input type="text" id="inputEmail" class="form-control" placeholder="Название" required value="Выполнить все задания и сдать работу преподавателю">
-        <label for="inputEmail" class="sr-only">Описание</label>
-        <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Описание">Пройти первый а потом второй урок. Закрепить практикой и написать проект сначала без подглядываний.</textarea>
-        <input type="file">
-        <img src="markup/assets/img/no-image.jpg" alt="" width="300" class="mb-3">
+        <label for="title" class="sr-only">Название</label>
+        <input type="text" id="title" name="title" class="form-control" p laceholder="Название" required value="<?=$task['title']?>">
+        <label for="description" class="sr-only">Описание</label>
+        <textarea name="description" id="description" class="form-control" cols="30" rows="10" placeholder="Описание"><?=$task['description']?></textarea>
+        <input type="file" name="image">
+        <img src="<?=$task['image']?>" alt="" width="300" class="mb-3">
         <button class="btn btn-lg btn-success btn-block" type="submit">Редактировать</button>
         <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
       </form>
     </div>
   </body>
 </html>
+<?php else:
+    header("Location: /login-form.php");
+    exit;
+endif;
+?>
