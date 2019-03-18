@@ -30,7 +30,7 @@ if ($_SESSION['logged_user']) :
             <div class="col-sm-4 offset-md-1 py-4">
               <h4 class="text-white"><?=$_SESSION['logged_user_email']?></h4>
               <ul class="list-unstyled">
-                <li><a href="/exit.php" class="text-white">Выйти</a></li>
+                <li><a href="/logout.php" class="text-white">Выйти</a></li>
               </ul>
             </div>
           </div>

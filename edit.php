@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 //check for emptiness
-    require 'Checks.php';
+    require 'Validate.php';
     Checks::checkAtEmpty();
 //edit
     require 'TasksManager.php';

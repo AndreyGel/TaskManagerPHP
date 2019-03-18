@@ -1,11 +1,10 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-//check for emptiness
-    require 'Checks.php';
-    Checks::checkAtEmpty();
-
+    require 'Validate.php';
     require 'Auth.php';
+    Validate::checkAtEmpty();
+    Validate::emailValidate();
     $register = new Auth();
     $register->register();
 

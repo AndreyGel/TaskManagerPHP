@@ -33,6 +33,7 @@ if ($_SESSION['logged_user']) :
         <input type="file" name="image">
         <img src="<?=$task['image']?>" alt="" width="300" class="mb-3">
         <button class="btn btn-lg btn-success btn-block" type="submit">Редактировать</button>
+        <input type="hidden" name="old_image" value="<?=$task['image']?>"">
         <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
       </form>
     </div>
