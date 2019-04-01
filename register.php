@@ -1,8 +1,12 @@
 <?php
+require_once __DIR__ . '/vendor/autoload.php';
+
+use TaskManager\Classes\Auth;
+use TaskManager\Classes\Validate;
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    require 'Validate.php';
-    require 'Auth.php';
+
     Validate::checkAtEmpty();
     Validate::emailValidate();
     $register = new Auth();

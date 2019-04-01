@@ -1,6 +1,5 @@
 <?php
-
-require 'QueryBuilder.php';
+namespace TaskManager\Classes;
 class Auth
 {
     private $data;
@@ -20,7 +19,7 @@ class Auth
 
         if ($result) {
             $errorMessage = 'Пользователь с таким email уже существует.';
-            include 'errors.php';
+            include '../errors.php';
             exit;
         }
         $this->qb->insert('user_name, email, password',$this->data);
@@ -29,16 +28,17 @@ class Auth
 
     public function login()
     {
-        $result = $this->qb->select('id, password',false, $this->data,'email' );
+        $result = $this->qb->select('id, password, user_name',false, $this->data,'email' );
         if ($this->data['password'] !== $result['password'])
         {
             $errorMessage = 'Неправильный логин или пароль';
-            include 'errors.php';
+            include '../errors.php';
             exit;
         }
         $userData = [
             'id' =>  $result['id'],
-            'email' => $this->data['email']
+            'email' => $this->data['email'],
+            'user_name' => $result['user_name']
         ];
         return $userData;
     }

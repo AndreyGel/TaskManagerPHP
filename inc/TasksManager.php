@@ -1,5 +1,5 @@
 <?php
-require 'QueryBuilder.php';
+namespace TaskManager\Classes;
 
 class TasksManager
 {

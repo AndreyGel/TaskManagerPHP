@@ -1,5 +1,5 @@
 <?php
-
+namespace TaskManager\Classes;
 
 class Validate
 {
@@ -7,7 +7,7 @@ class Validate
     {
         foreach ($_POST as $input) {
             if (empty($input)) {
-                include 'errors.php';
+                include '../errors.php';
                 exit;
             }
         }
@@ -17,7 +17,7 @@ class Validate
     {
         if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
             $errorMessage = 'Некорректный email!';
-            include 'errors.php';
+            include '../errors.php';
             exit;
         }
     }

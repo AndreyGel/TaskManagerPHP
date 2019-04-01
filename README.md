@@ -1,2 +1,0 @@
-# TaskManagerPHP
-Simple Task Manager
