@@ -1,5 +1,4 @@
 <?php
-namespace TaskManager\Classes;
 
 class QueryBuilder
 {
@@ -8,7 +7,9 @@ class QueryBuilder
 
     public function __construct($table)
     {
-        $this->pdo = new \PDO("mysql:host=localhost; dbname=test", "root", "");
+        $configDB = include ROOT.'/config/db.php';
+        $dsn = "mysql:host={$configDB['host']}; dbname={$configDB['dbname']}";
+        $this->pdo = new \PDO($dsn, $configDB['username'], $configDB['password']);
         $this->table = $table;
     }
 
@@ -23,7 +24,7 @@ class QueryBuilder
         $sql = "SELECT {$select} FROM {$this->table} WHERE {$condition}";
         $statement = $this->bindHelper($data, $sql, $where);
         $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
-
+        if (!$result) return null;
         return $all ? $result : $result[0];
     }
 

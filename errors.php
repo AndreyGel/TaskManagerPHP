@@ -7,8 +7,8 @@
     <title>Errors</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="markup/assets/css/bootstrap.css" rel="stylesheet">
-    <link href="markup/assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
     
     <style>
       
