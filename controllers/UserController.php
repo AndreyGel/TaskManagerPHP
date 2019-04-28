@@ -13,6 +13,8 @@ class UserController
     public function actionLoginForm()
     {
         require_once ROOT . '/views/user/login-form.php';
+        return true;
+
     }
 
     public function actionLogin()
@@ -25,16 +27,17 @@ class UserController
             $_SESSION['logged_user'] = md5($userData['id']);
             $_SESSION['logged_user_email'] = $userData['email'];
             header("Location: /task/list");
-            exit;
         } else {
             header("Location: /user/loginForm");
-            exit;
         }
+        return true;
+
     }
 
     public function actionRegisterForm()
     {
         require_once ROOT . '/views/user/register-form.php';
+        return true;
     }
 
     public function actionRegister()
@@ -45,18 +48,19 @@ class UserController
 
             $this->userInstance->register();
             header("Location: /user/loginForm");
-            exit;
         } else {
             header("Location: /user/loginForm");
-            exit;
         }
+        return true;
+
     }
 
     public function actionLogout()
     {
         $this->userInstance->logout();
         header("Location: /user/loginForm");
-        exit;
+        return true;
+
     }
 
 }

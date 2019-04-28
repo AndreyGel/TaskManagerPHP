@@ -19,14 +19,14 @@ class TaskController
     {
         $task = $this->taskInstance->getSingle($id) ?? '';
         require_once ROOT . '/views/task/show.php';
-        exit;
+        return true;
     }
 
     public function actionList()
     {
             $tasks = $this->taskInstance->getAll() ?? array();
             require_once ROOT . '/views/task/list.php';
-            exit;
+            return true;
     }
 
     public function actionEditForm($id)
@@ -35,7 +35,7 @@ class TaskController
         $taskId = $id;
         $task = $this->taskInstance->getSingle($id) ?? '';
         require_once ROOT . '/views/task/edit-form.php';
-        exit;
+        return true;
 
     }
 
@@ -46,14 +46,14 @@ class TaskController
             $this->taskInstance->edit($id);
         }
         header("Location: /task/list");
-        exit;
+        return true;
 
     }
 
     public function actionCreateForm()
     {
         require_once ROOT . '/views/task/create-form.php';
-        exit;
+        return true;
     }
 
     public function actionCreate()
@@ -63,7 +63,7 @@ class TaskController
             $this->taskInstance->add();
         }
         header("Location: /task/list");
-        exit;
+        return true;
     }
 
     public function actionDelete($id)
@@ -72,7 +72,7 @@ class TaskController
             $this->taskInstance->delete($id);
         }
         header("Location: /task/list");
-        exit;
+        return true;
     }
 
 }
